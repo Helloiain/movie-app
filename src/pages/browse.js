@@ -8,7 +8,7 @@ function Browse(props) {
 	const [movies, setMovies] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [page, setPage] = useState(1);
-	const [sort, setSort] = useState('popular');
+	const [sort, setSort] = useState('popularity.desc');
 
 	useEffect(() => {
 		loadData(sort, page);
