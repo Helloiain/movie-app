@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import onClickOutside from 'react-onclickoutside';
 
-function Dropdown({ sort, setSort }) {
+function MovieDropdown({ sort, setSort }) {
 	const [isOpen, setisOpen] = useState(false);
 
-	Dropdown.handleClickOutside = () => setisOpen(false);
+	MovieDropdown.handleClickOutside = () => setisOpen(false);
 
 	function toggleList() {
 		setisOpen(!isOpen);
@@ -37,7 +37,7 @@ function Dropdown({ sort, setSort }) {
 }
 
 const clickOutsideConfig = {
-	handleClickOutside: () => Dropdown.handleClickOutside,
+	handleClickOutside: () => MovieDropdown.handleClickOutside,
 };
 
-export default onClickOutside(Dropdown, clickOutsideConfig);
+export default onClickOutside(MovieDropdown, clickOutsideConfig);

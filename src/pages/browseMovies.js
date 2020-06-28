@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Dropdown from '../components/dropdown';
+import MovieDropdown from '../components/movieDropdown';
 import MovieList from '../components/movieList';
 import Pagination from '../components/pagination';
 import { getMovies } from '../api/apiUtils';
@@ -31,7 +31,7 @@ function BrowseMovies(props) {
 
 	return (
 		<div>
-			<Dropdown sort={sort} setSort={setSort} />
+			<MovieDropdown sort={sort} setSort={setSort} />
 			<MovieList movies={movies} />
 			<Pagination
 				page={page}
