@@ -14,15 +14,9 @@ function App() {
 			>
 				<Sidebar />
 				<Switch>
-					<Route path='/' exact={true}>
-						<Redirect from='/' to='/browse/popular' />
-					</Route>
-					<Route path='/browse' exact={true}>
-						<Redirect from='/browse' to='/browse/popular' />
-					</Route>
 					<Route
 						exact={true}
-						path='/browse/:type'
+						path='/'
 						render={(props) => <Browse {...props} />}
 					></Route>
 				</Switch>
