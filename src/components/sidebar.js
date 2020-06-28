@@ -1,10 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Sidebar() {
 	return (
-		<ul>
-			<li>hello from sidebar</li>
-		</ul>
+		<div>
+			<h1>Logo</h1>
+			<hr />
+			<ul>
+				<Link to='/'>Movies</Link>
+				<Link to='/tv'>Tv</Link>
+			</ul>
+		</div>
 	);
 }
 

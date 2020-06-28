@@ -1,12 +1,13 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import Browse from './pages/browse';
+import BrowseMovies from './pages/browseMovies';
+import BrowseShows from './pages/browseShows';
 import Sidebar from './components/sidebar';
 
 function App() {
 	return (
-		<BrowserRouter>
+		<Router>
 			<div
 				style={{
 					display: 'flex',
@@ -17,11 +18,14 @@ function App() {
 					<Route
 						exact={true}
 						path='/'
-						render={(props) => <Browse {...props} />}
+						render={(props) => <BrowseMovies {...props} />}
 					></Route>
+					<Route>
+						<BrowseShows />
+					</Route>
 				</Switch>
 			</div>
-		</BrowserRouter>
+		</Router>
 	);
 }
 

@@ -4,7 +4,7 @@ import MovieList from '../components/movieList';
 import Pagination from '../components/pagination';
 import { getMovies } from '../api/apiUtils';
 
-function Browse(props) {
+function BrowseMovies(props) {
 	const [movies, setMovies] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [page, setPage] = useState(1);
@@ -42,4 +42,4 @@ function Browse(props) {
 	);
 }
 
-export default Browse;
+export default BrowseMovies;
