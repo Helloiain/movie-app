@@ -1,18 +1,25 @@
 import React, { useState } from 'react';
+import onClickOutside from 'react-onclickoutside';
 
 function Dropdown({ sort, setSort }) {
-	const [isHovering, setIsHovering] = useState(false);
+	const [isOpen, setisOpen] = useState(false);
 
-	function handleMouseHover() {
-		setIsHovering(!isHovering);
+	Dropdown.handleClickOutside = () => setisOpen(false);
+
+	function toggleList() {
+		setisOpen(!isOpen);
 	}
-
 	return (
 		<div>
-			<p onMouseEnter={handleMouseHover} onMouseLeave={handleMouseHover}>
+			<div
+				onClick={() => {
+					toggleList();
+				}}
+			>
 				{sort.replace(/\..*/, '').replace(/_/, ' ')}
-			</p>
-			{isHovering && (
+				{isOpen ? '˅' : '˄'}
+			</div>
+			{isOpen && (
 				<ul
 					onClick={(e) => {
 						const dataId = e.target.getAttribute('data-sort');
@@ -29,4 +36,8 @@ function Dropdown({ sort, setSort }) {
 	);
 }
 
-export default Dropdown;
+const clickOutsideConfig = {
+	handleClickOutside: () => Dropdown.handleClickOutside,
+};
+
+export default onClickOutside(Dropdown, clickOutsideConfig);
