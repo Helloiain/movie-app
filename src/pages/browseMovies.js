@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import MovieDropdown from '../components/movieDropdown';
 import MovieList from '../components/movieList';
 import Pagination from '../components/pagination';
+import Search from '../components/search';
 import { getMovies } from '../api/apiUtils';
 
 function BrowseMovies(props) {
@@ -17,6 +18,7 @@ function BrowseMovies(props) {
 	function loadData(sort, page) {
 		getMovies(sort, page)
 			.then((res) => {
+				console.log(res.data);
 				setMovies(res.data);
 				setLoading(false);
 			})
@@ -31,7 +33,16 @@ function BrowseMovies(props) {
 
 	return (
 		<div style={{ marginLeft: '200px' }}>
-			<MovieDropdown sort={sort} setSort={setSort} />
+			<div
+				style={{
+					display: 'flex',
+					justifyContent: 'space-between',
+					margin: '2rem 22px',
+				}}
+			>
+				<Search />
+				<MovieDropdown sort={sort} setSort={setSort} />
+			</div>
 			<MovieList movies={movies} />
 			<Pagination
 				page={page}

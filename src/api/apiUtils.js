@@ -15,9 +15,9 @@ async function getMovies(sort, page) {
 	}
 }
 
-async function getShows(type, page) {
+async function getShows(sort, page) {
 	try {
-		return await API.get(`/tv/${type}`, {
+		return await API.get(`/tv/${sort}`, {
 			params: {
 				api_key: APIKey,
 				page: page,
@@ -28,4 +28,17 @@ async function getShows(type, page) {
 	}
 }
 
-export { getMovies, getShows };
+async function getSearch(search, page) {
+	try {
+		return await API.get('/search/movie', {
+			params: {
+				query: search,
+				page,
+			},
+		});
+	} catch (err) {
+		return err;
+	}
+}
+
+export { getMovies, getShows, getSearch };

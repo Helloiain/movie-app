@@ -16,8 +16,7 @@ function Navigation() {
 			<li>
 				<Link to='/tv'>
 					<FaTv style={{ marginRight: '1rem', verticalAlign: 'sub' }} />
-					{`
-                     `}
+					{` `}
 					Tv
 				</Link>
 			</li>

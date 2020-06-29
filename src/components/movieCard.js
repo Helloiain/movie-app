@@ -10,7 +10,7 @@ function MovieCard({ title, poster_path, vote_average, release_date }) {
 			{poster_path ? (
 				<img
 					src={`${posterUrl}/${poster_path}`}
-					alt='poster'
+					alt={`${title}`}
 					style={{
 						width: '100%',
 					}}

@@ -15,11 +15,9 @@ function App() {
 			>
 				<Sidebar />
 				<Switch>
-					<Route
-						exact={true}
-						path='/'
-						render={(props) => <BrowseMovies {...props} />}
-					></Route>
+					<Route exact={true} path='/'>
+						<BrowseMovies />
+					</Route>
 					<Route>
 						<BrowseShows />
 					</Route>
