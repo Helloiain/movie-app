@@ -16,7 +16,7 @@ function ShowDropdown({ type, setType }) {
 					toggleList();
 				}}
 			>
-				{type.replace(/\..*/, '').replace(/_/, ' ')}
+				{type.replace(/_/, ' ')}
 				{isOpen ? '˅' : '˄'}
 			</div>
 			{isOpen && (

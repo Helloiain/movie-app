@@ -1,4 +1,5 @@
 import React from 'react';
+import MovieCard from './movieCard';
 
 function MovieList({ movies }) {
 	if (!movies || movies.results === undefined) {
@@ -6,11 +7,11 @@ function MovieList({ movies }) {
 	}
 
 	return (
-		<ul>
+		<main style={{ display: 'flex', flexWrap: 'wrap' }}>
 			{movies.results.map((movie) => {
-				return <li key={movie.title}>{movie.title}</li>;
+				return <MovieCard key={movie.title} {...movie} />;
 			})}
-		</ul>
+		</main>
 	);
 }
 
