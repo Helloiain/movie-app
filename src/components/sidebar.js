@@ -8,6 +8,8 @@ function Sidebar() {
 				position: 'fixed',
 				top: '0',
 				width: '200px',
+				height: '100%',
+				boxShadow: ' 1px 8px 16px 0 rgba(0, 0, 0, 0.2)',
 			}}
 		>
 			<img
@@ -20,7 +22,7 @@ function Sidebar() {
 				}}
 			/>
 			<h1 style={{ marginTop: '1rem', textAlign: 'center' }}>Movio</h1>
-			<hr />
+			<hr style={{ borderTop: '1px solid rgba(0,0,0,0.1)' }} />
 			<Navigation />
 		</div>
 	);
