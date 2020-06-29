@@ -20,7 +20,6 @@ async function getShows(type, page) {
 		return await API.get(`/tv/${type}`, {
 			params: {
 				api_key: APIKey,
-				type: type,
 				page: page,
 			},
 		});

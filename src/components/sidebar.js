@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Navigation from './navigation';
 
 function Sidebar() {
@@ -11,7 +10,16 @@ function Sidebar() {
 				width: '200px',
 			}}
 		>
-			<h1 style={{ marginTop: '3rem', textAlign: 'center' }}>Movio</h1>
+			<img
+				src='./images/cinema.png'
+				alt='logo'
+				style={{
+					display: 'block',
+					width: '60px',
+					margin: '2rem auto 0 auto',
+				}}
+			/>
+			<h1 style={{ marginTop: '1rem', textAlign: 'center' }}>Movio</h1>
 			<hr />
 			<Navigation />
 		</div>

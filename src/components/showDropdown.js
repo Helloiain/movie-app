@@ -19,7 +19,7 @@ function ShowDropdown({ type, setType }) {
 					}}
 					style={{ position: 'absolute', right: '2rem' }}
 				>
-					{type.replace(/_/, ' ')} {` `}
+					{type.replace(/_/g, ' ')} {` `}
 					{isOpen ? (
 						<FaAngleDown style={angleStyle} />
 					) : (
