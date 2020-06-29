@@ -17,6 +17,7 @@ function BrowseShows() {
 	function loadData(type, page) {
 		getShows(type, page)
 			.then((res) => {
+				console.log(res.data);
 				setShows(res.data);
 				setLoading(false);
 			})
@@ -30,7 +31,7 @@ function BrowseShows() {
 	}
 
 	return (
-		<div>
+		<div style={{ marginLeft: '200px' }}>
 			<ShowDropdown type={type} setType={setType} />
 			<ShowList shows={shows} />
 			<Pagination

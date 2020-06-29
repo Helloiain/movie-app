@@ -1,4 +1,5 @@
 import React from 'react';
+import ShowCard from './showCard.js';
 
 function ShowList({ shows }) {
 	if (!shows || shows.results === undefined) {
@@ -6,11 +7,11 @@ function ShowList({ shows }) {
 	}
 
 	return (
-		<ul>
+		<main style={{ display: 'flex', flexWrap: 'wrap', marginTop: '60px' }}>
 			{shows.results.map((show) => {
-				return <li key={show.original_name}>{show.original_name}</li>;
+				return <ShowCard key={show.original_name} {...show} />;
 			})}
-		</ul>
+		</main>
 	);
 }
 
