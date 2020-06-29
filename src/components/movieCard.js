@@ -10,7 +10,6 @@ function MovieCard({ title, poster_path, vote_average, release_date }) {
 					alt='poster'
 					style={{
 						width: '100%',
-						borderRadius: '.5rem',
 					}}
 				/>
 			) : (
