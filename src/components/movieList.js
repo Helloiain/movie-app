@@ -7,7 +7,7 @@ function MovieList({ movies }) {
 	}
 
 	return (
-		<main style={{ display: 'flex', flexWrap: 'wrap' }}>
+		<main style={{ display: 'flex', flexWrap: 'wrap', marginTop: '60px' }}>
 			{movies.results.map((movie) => {
 				return <MovieCard key={movie.title} {...movie} />;
 			})}

@@ -11,7 +11,7 @@ function Sidebar() {
 				width: '200px',
 			}}
 		>
-			<h1 style={{ marginTop: '3rem', textAlign: 'center' }}>Logo</h1>
+			<h1 style={{ marginTop: '3rem', textAlign: 'center' }}>Movio</h1>
 			<hr />
 			<Navigation />
 		</div>
