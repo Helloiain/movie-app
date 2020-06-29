@@ -31,7 +31,7 @@ function BrowseMovies(props) {
 	}
 
 	return (
-		<div>
+		<div style={{ marginLeft: '200px' }}>
 			<MovieDropdown sort={sort} setSort={setSort} />
 			<MovieList movies={movies} />
 			<Pagination
