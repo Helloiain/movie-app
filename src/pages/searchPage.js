@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Search from '../components/search';
 import Pagination from '../components/pagination';
+import Loading from '../components/loading';
 import { useParams } from 'react-router-dom';
 import { getSearch } from '../api/apiUtils';
 import { posterUrl } from '../config';
@@ -31,7 +32,7 @@ function SearchPage() {
 	console.log(results.results);
 
 	if (loading) {
-		return <div>loading</div>;
+		return <Loading />;
 	}
 
 	if (results.results === undefined || results.results.length === 0) {

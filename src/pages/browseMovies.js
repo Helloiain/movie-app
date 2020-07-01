@@ -3,6 +3,7 @@ import MovieDropdown from '../components/movieDropdown';
 import MovieList from '../components/movieList';
 import Pagination from '../components/pagination';
 import Search from '../components/search';
+import Loading from '../components/loading';
 import { getMovies } from '../api/apiUtils';
 
 function BrowseMovies(props) {
@@ -28,7 +29,7 @@ function BrowseMovies(props) {
 	}
 
 	if (loading) {
-		return <div>loading</div>;
+		return <Loading />;
 	}
 
 	return (

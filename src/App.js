@@ -15,17 +15,15 @@ function App() {
 				}}
 			>
 				<Sidebar />
-				<Switch>
-					<Route exact={true} path='/'>
-						<BrowseMovies />
-					</Route>
-					<Route path='/tv'>
-						<BrowseShows />
-					</Route>
-					<Route path='/search/:search'>
-						<Search />
-					</Route>
-				</Switch>
+				<Route exact={true} path='/'>
+					<BrowseMovies />
+				</Route>
+				<Route path='/tv'>
+					<BrowseShows />
+				</Route>
+				<Route path='/search/:search'>
+					<Search />
+				</Route>
 			</div>
 		</Router>
 	);
