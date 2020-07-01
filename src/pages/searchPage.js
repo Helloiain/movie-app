@@ -8,15 +8,17 @@ import { posterUrl } from '../config';
 function SearchPage() {
 	const [results, setResults] = useState([]);
 	const [loading, setLoading] = useState(true);
+	const [page, setPage] = useState(1);
 	const { search } = useParams();
 	const query = search;
 
 	useEffect(() => {
-		loadData(query);
-	}, [query]);
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+		loadData(query, page);
+	}, [query, page]);
 
-	const loadData = (query) => {
-		getSearch(query)
+	const loadData = (query, page) => {
+		getSearch(query, page)
 			.then((res) => {
 				setResults(res.data);
 				setLoading(false);
@@ -32,6 +34,18 @@ function SearchPage() {
 		return <div>loading</div>;
 	}
 
+	if (results.results === undefined || results.results.length === 0) {
+		return (
+			<div style={{ marginLeft: '222px' }}>
+				<h1>Oh No!</h1>
+				<p>It looks like there were no results found for {query}</p>
+				<a className='button' href='/'>
+					Return Home
+				</a>
+			</div>
+		);
+	}
+
 	return (
 		<div style={{ marginLeft: '200px' }}>
 			<div style={{ margin: '2rem 22px' }}>
@@ -41,7 +55,10 @@ function SearchPage() {
 			<div style={{ display: 'flex', flexWrap: 'wrap' }}>
 				{results.results.map((result) => {
 					return (
-						<div style={{ flex: '1 0 200px', margin: '1.5rem' }}>
+						<div
+							key={result.title}
+							style={{ flex: '1 0 200px', margin: '1.5rem' }}
+						>
 							{result.poster_path ? (
 								<img
 									src={`${posterUrl}/${result.poster_path}`}
@@ -51,7 +68,7 @@ function SearchPage() {
 									}}
 								/>
 							) : (
-								<img src='./images/poster.png' alt='poster' />
+								<img src='./images/poster.png' alt={result.title} />
 							)}
 							<h3>{result.title}</h3>
 							<div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -62,6 +79,11 @@ function SearchPage() {
 					);
 				})}
 			</div>
+			<Pagination
+				page={page}
+				totalPages={results.total_pages}
+				setPage={setPage}
+			/>
 		</div>
 	);
 }
