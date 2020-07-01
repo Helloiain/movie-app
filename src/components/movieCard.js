@@ -16,7 +16,7 @@ function MovieCard({ title, poster_path, vote_average, release_date }) {
 					}}
 				/>
 			) : (
-				<img src='./images/poster.png' alt='poster' />
+				<img src={process.env.PUBLIC_URL + '/images/cinema.png'} alt={title} />
 			)}
 			<h3>{title}</h3>
 			<div style={{ display: 'flex', justifyContent: 'space-between' }}>

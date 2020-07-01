@@ -69,7 +69,10 @@ function SearchPage() {
 									}}
 								/>
 							) : (
-								<img src='./images/poster.png' alt={result.title} />
+								<img
+									src={process.env.PUBLIC_URL + '/images/poster.png'}
+									alt={result.title}
+								/>
 							)}
 							<h3>{result.title}</h3>
 							<div style={{ display: 'flex', justifyContent: 'space-between' }}>

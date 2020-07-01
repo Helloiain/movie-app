@@ -9,7 +9,7 @@ function ShowList({ shows }) {
 	return (
 		<main style={{ display: 'flex', flexWrap: 'wrap', marginTop: '60px' }}>
 			{shows.results.map((show) => {
-				return <ShowCard key={show.original_name} {...show} />;
+				return <ShowCard key={show.name} {...show} />;
 			})}
 		</main>
 	);

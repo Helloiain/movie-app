@@ -13,7 +13,7 @@ function Sidebar() {
 			}}
 		>
 			<img
-				src='./images/cinema.png'
+				src={process.env.PUBLIC_URL + '/images/cinema.png'}
 				alt='logo'
 				style={{
 					display: 'block',
