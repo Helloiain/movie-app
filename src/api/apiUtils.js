@@ -28,12 +28,12 @@ async function getShows(sort, page) {
 	}
 }
 
-async function getSearch(search, page) {
+async function getSearch(search) {
 	try {
-		return await API.get('/search/movie', {
+		return await API.get('/search/multi', {
 			params: {
+				api_key: APIKey,
 				query: search,
-				page,
 			},
 		});
 	} catch (err) {

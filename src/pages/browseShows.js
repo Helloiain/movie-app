@@ -12,13 +12,13 @@ function BrowseShows() {
 	const [sort, setSort] = useState('popular');
 
 	useEffect(() => {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
 		loadData(sort, page);
 	}, [sort, page]);
 
 	function loadData(sort, page) {
 		getShows(sort, page)
 			.then((res) => {
-				console.log(res.data);
 				setShows(res.data);
 				setLoading(false);
 			})

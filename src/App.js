@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import BrowseMovies from './pages/browseMovies';
 import BrowseShows from './pages/browseShows';
 import Sidebar from './components/sidebar';
+import Search from './pages/searchPage';
 
 function App() {
 	return (
@@ -18,8 +19,11 @@ function App() {
 					<Route exact={true} path='/'>
 						<BrowseMovies />
 					</Route>
-					<Route>
+					<Route path='/tv'>
 						<BrowseShows />
+					</Route>
+					<Route path='/search/:search'>
+						<Search />
 					</Route>
 				</Switch>
 			</div>

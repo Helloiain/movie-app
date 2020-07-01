@@ -12,13 +12,13 @@ function BrowseMovies(props) {
 	const [sort, setSort] = useState('popularity.desc');
 
 	useEffect(() => {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
 		loadData(sort, page);
 	}, [sort, page]);
 
 	function loadData(sort, page) {
 		getMovies(sort, page)
 			.then((res) => {
-				console.log(res.data);
 				setMovies(res.data);
 				setLoading(false);
 			})
