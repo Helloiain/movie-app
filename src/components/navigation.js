@@ -5,7 +5,11 @@ import { FaFilm, FaTv } from 'react-icons/fa';
 
 function Navigation() {
 	return (
-		<ul style={{ marginLeft: '50px' }}>
+		<ul
+			style={{
+				marginLeft: '50px',
+			}}
+		>
 			<li>
 				<Link to='/'>
 					<FaFilm style={{ marginRight: '1rem', verticalAlign: 'sub' }} />

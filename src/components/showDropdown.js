@@ -16,6 +16,7 @@ function ShowDropdown({ sort, setSort }) {
 				onClick={() => {
 					toggleList();
 				}}
+				style={{ cursor: 'pointer' }}
 			>
 				{sort.replace(/_/g, ' ')} {` `}
 				{isOpen ? (

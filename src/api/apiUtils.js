@@ -42,4 +42,17 @@ async function getSearch(search, page) {
 	}
 }
 
-export { getMovies, getShows, getSearch };
+async function getDetails(type, id) {
+	try {
+		return await API.get(`/${type}/${id}`, {
+			params: {
+				api_key: APIKey,
+				append_to_response: 'videos',
+			},
+		});
+	} catch (err) {
+		return err;
+	}
+}
+
+export { getMovies, getShows, getSearch, getDetails };

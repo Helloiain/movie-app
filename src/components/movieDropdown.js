@@ -16,6 +16,7 @@ function MovieDropdown({ sort, setSort }) {
 				onClick={() => {
 					toggleList();
 				}}
+				style={{ cursor: 'pointer' }}
 			>
 				{sort.replace(/\..*/, '').replace(/_/, ' ')} {` `}
 				{isOpen ? (
