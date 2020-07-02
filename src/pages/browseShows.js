@@ -1,56 +1,51 @@
 import React, { useState, useEffect } from 'react';
-import ShowList from '../components/showList';
 import Pagination from '../components/pagination';
-import { getShows } from '../api/apiUtils';
-import ShowDropdown from '../components/showDropdown';
+import { getShows, getBrowse } from '../api/apiUtils';
+import Dropdown from '../components/dropdown';
 import Loading from '../components/loading';
 import Search from '../components/search';
 
+import ItemList from '../components/itemList';
+import { Container, Nav } from '../styled-components';
+
 function BrowseShows() {
 	const [shows, setShows] = useState([]);
-	const [loading, setLoading] = useState(true);
+	const [sortBy, setSortBy] = useState('popularity.desc');
 	const [page, setPage] = useState(1);
-	const [sort, setSort] = useState('popular');
+	const [isLoading, setIsLoading] = useState(true);
+
+	const type = 'tv';
 
 	useEffect(() => {
+		loadData(type, sortBy, page);
 		window.scrollTo({ top: 0, behavior: 'smooth' });
-		loadData(sort, page);
-	}, [sort, page]);
+	}, [sortBy, page]);
 
-	function loadData(sort, page) {
-		getShows(sort, page)
-			.then((res) => {
-				setShows(res.data);
-				setLoading(false);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-	}
+	const loadData = (type, sort, page) => {
+		getBrowse(type, sort, page).then((res) => {
+			setShows(res);
+			setIsLoading(false);
+			console.log(res);
+		});
+	};
 
-	if (loading) {
+	if (isLoading) {
 		return <Loading />;
 	}
 
 	return (
-		<div style={{ marginLeft: '200px' }}>
-			<div
-				style={{
-					display: 'flex',
-					justifyContent: 'space-between',
-					margin: '2rem 22px',
-				}}
-			>
+		<Container>
+			<Nav>
 				<Search />
-				<ShowDropdown sort={sort} setSort={setSort} />
-			</div>
-			<ShowList shows={shows} />
+				<Dropdown sortBy={sortBy} setSortBy={setSortBy} type={type} />
+			</Nav>
+			<ItemList items={shows} type={type} />
 			<Pagination
 				page={page}
-				total_pages={shows.total_pages}
+				totalPages={shows.total_pages}
 				setPage={setPage}
 			/>
-		</div>
+		</Container>
 	);
 }
 

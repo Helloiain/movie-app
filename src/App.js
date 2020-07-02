@@ -28,13 +28,13 @@ function App() {
 					<Route exact={true} path='/movie'>
 						<BrowseMovies />
 					</Route>
-					<Route
-						path='/details/:type/:id'
-						render={(props) => <Detail {...props} />}
-					></Route>
-					<Route path='/tv'>
+					<Route exact={true} path='/tv'>
 						<BrowseShows />
 					</Route>
+					<Route
+						path='/:type/:id?'
+						render={(props) => <Detail {...props} />}
+					></Route>
 					<Route path='/search/:search'>
 						<Search />
 					</Route>

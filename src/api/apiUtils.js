@@ -1,28 +1,16 @@
 import { API, APIKey } from '../config.js';
 require('dotenv').config();
 
-async function getMovies(sort, page) {
+async function getBrowse(type, sort_by, page) {
 	try {
-		return await API.get(`/discover/movie`, {
+		const res = await API.get(`/discover/${type}`, {
 			params: {
 				api_key: APIKey,
-				page: page,
-				sort_by: sort,
+				sort_by,
+				page,
 			},
 		});
-	} catch (err) {
-		return err;
-	}
-}
-
-async function getShows(sort, page) {
-	try {
-		return await API.get(`/tv/${sort}`, {
-			params: {
-				api_key: APIKey,
-				page: page,
-			},
-		});
+		return res.data;
 	} catch (err) {
 		return err;
 	}
@@ -55,4 +43,4 @@ async function getDetails(type, id) {
 	}
 }
 
-export { getMovies, getShows, getSearch, getDetails };
+export { getBrowse, getSearch, getDetails };
