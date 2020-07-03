@@ -43,4 +43,17 @@ async function getDetails(type, id) {
 	}
 }
 
-export { getBrowse, getSearch, getDetails };
+async function getRecommendations(type, id) {
+	try {
+		const res = await API.get(`/${type}/${id}/recommendations`, {
+			params: {
+				api_key: APIKey,
+			},
+		});
+		return res.data;
+	} catch (err) {
+		return err;
+	}
+}
+
+export { getBrowse, getSearch, getDetails, getRecommendations };

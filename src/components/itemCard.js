@@ -20,25 +20,20 @@ function ItemCard({
 	let location = useLocation();
 
 	return (
-		<>
-			<Card>
-				<Link to={`${location.pathname}/${id}`}>
-					{poster_path ? (
-						<Img src={`${posterUrl}/${poster_path}`} alt={name} />
-					) : (
-						<Img
-							src={process.env.PUBLIC_URL + '/images/poster.png'}
-							alt={name}
-						/>
-					)}
-					<Title>{title || name}</Title>
-					<SubContainer>
-						<div>{vote_average} ★</div>
-						<div>{release}</div>
-					</SubContainer>
-				</Link>
-			</Card>
-		</>
+		<Card>
+			<Link to={`/${type}/${id}`}>
+				{poster_path ? (
+					<Img src={`${posterUrl}/${poster_path}`} alt={name} />
+				) : (
+					<Img src={process.env.PUBLIC_URL + '/images/poster.png'} alt={name} />
+				)}
+				<Title>{title || name}</Title>
+				<SubContainer>
+					<div>{vote_average} ★</div>
+					<div>{release}</div>
+				</SubContainer>
+			</Link>
+		</Card>
 	);
 }
 

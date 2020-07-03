@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from '@emotion/styled/macro';
 
 export const Container = styled.div`
 	margin-left: 200px;
@@ -9,16 +9,21 @@ export const Main = styled.main`
 	flex-wrap: wrap;
 `;
 
-export const Card = styled.div`
-	flex: 1 0 200px;
-	margin: 2rem;
-`;
-
-export const Title = styled.h3``;
-
 export const Img = styled.img`
 	width: 100%;
 `;
+
+export const Card = styled.div`
+	flex: 1 0 200px;
+	margin: 2rem;
+	&:hover {
+		${Img} {
+			box-shadow: 1px 8px 16px 0 rgba(0, 0, 0, 0.4);
+		}
+	}
+`;
+
+export const Title = styled.h3``;
 
 export const SubContainer = styled.div`
 	display: flex;

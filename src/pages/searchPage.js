@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Search from '../components/search';
 import Pagination from '../components/pagination';
 import Loading from '../components/loading';
+import AppError from '../components/appError';
 import { useParams } from 'react-router-dom';
 import { getSearch } from '../api/apiUtils';
 import { posterUrl } from '../config';
@@ -10,6 +11,7 @@ function SearchPage() {
 	const [results, setResults] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [page, setPage] = useState(1);
+	const [error, setError] = useState();
 	const { search } = useParams();
 	const query = search;
 
@@ -25,7 +27,7 @@ function SearchPage() {
 				setLoading(false);
 			})
 			.catch((err) => {
-				console.log(err);
+				setError(err);
 			});
 	};
 
@@ -33,6 +35,10 @@ function SearchPage() {
 
 	if (loading) {
 		return <Loading />;
+	}
+
+	if (error) {
+		return <AppError />;
 	}
 
 	if (results.results === undefined || results.results.length === 0) {
