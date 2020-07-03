@@ -25,12 +25,16 @@ function App() {
 					<Route exact={true} path='/'>
 						<Redirect from='/' to='/movie' />
 					</Route>
-					<Route exact={true} path='/movie'>
-						<BrowseMovies />
-					</Route>
-					<Route exact={true} path='/tv'>
-						<BrowseShows />
-					</Route>
+					<Route
+						exact={true}
+						path='/movie'
+						render={(props) => <BrowseMovies {...props} />}
+					></Route>
+					<Route
+						exact={true}
+						path='/tv'
+						render={(props) => <BrowseShows {...props} />}
+					></Route>
 					<Route
 						path='/:type/:id?'
 						render={(props) => <Detail {...props} />}

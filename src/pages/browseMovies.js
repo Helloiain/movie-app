@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import queryString from 'query-string';
 import Dropdown from '../components/dropdown';
 import Pagination from '../components/pagination';
 import Search from '../components/search';
@@ -11,10 +12,10 @@ import { Container, Nav } from '../styled-components';
 function BrowseMovies(props) {
 	const [movies, setMovies] = useState([]);
 	const [sortBy, setSortBy] = useState('popularity.desc');
-	const [page, setPage] = useState(1);
 	const [isLoading, setIsLoading] = useState(true);
 
 	const type = 'movie';
+	const page = queryString.parse(props.location.search).page || 1;
 
 	useEffect(() => {
 		loadData(type, sortBy, page);
@@ -40,59 +41,9 @@ function BrowseMovies(props) {
 				<Dropdown sortBy={sortBy} setSortBy={setSortBy} type={type} />
 			</Nav>
 			<ItemList items={movies} type={type} />
-			<Pagination
-				page={page}
-				totalPages={movies.total_pages}
-				setPage={setPage}
-			/>
+			<Pagination page={movies.page} totalPages={movies.total_pages} />
 		</Container>
 	);
-
-	// const [movies, setMovies] = useState([]);
-	// const [loading, setLoading] = useState(true);
-	// const [page, setPage] = useState(1);
-	// const [sort, setSort] = useState('popularity.desc');
-
-	// useEffect(() => {
-	// 	window.scrollTo({ top: 0, behavior: 'smooth' });
-	// 	loadData(sort, page);
-	// }, [sort, page]);
-
-	// function loadData(sort, page) {
-	// 	getMovies(sort, page)
-	// 		.then((res) => {
-	// 			setMovies(res.data);
-	// 			setLoading(false);
-	// 		})
-	// 		.catch((err) => {
-	// 			console.log(err);
-	// 		});
-	// }
-
-	// if (loading) {
-	// 	return <Loading />;
-	// }
-
-	// return (
-	// 	<div style={{ marginLeft: '200px' }}>
-	// 		<div
-	// 			style={{
-	// 				display: 'flex',
-	// 				justifyContent: 'space-between',
-	// 				margin: '2rem 22px',
-	// 			}}
-	// 		>
-	// 			<Search />
-	// 			<MovieDropdown sort={sort} setSort={setSort} />
-	// 		</div>
-	// 		<MovieList movies={movies} />
-	// 		<Pagination
-	// 			page={page}
-	// 			totalPages={movies.total_pages}
-	// 			setPage={setPage}
-	// 		/>
-	// 	</div>
-	// );
 }
 
 export default BrowseMovies;

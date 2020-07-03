@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import queryString from 'query-string';
 import Pagination from '../components/pagination';
 import { getShows, getBrowse } from '../api/apiUtils';
 import Dropdown from '../components/dropdown';
@@ -8,13 +9,13 @@ import Search from '../components/search';
 import ItemList from '../components/itemList';
 import { Container, Nav } from '../styled-components';
 
-function BrowseShows() {
+function BrowseShows(props) {
 	const [shows, setShows] = useState([]);
 	const [sortBy, setSortBy] = useState('popularity.desc');
-	const [page, setPage] = useState(1);
 	const [isLoading, setIsLoading] = useState(true);
 
 	const type = 'tv';
+	const page = queryString.parse(props.location.search).page || 1;
 
 	useEffect(() => {
 		loadData(type, sortBy, page);
@@ -40,11 +41,7 @@ function BrowseShows() {
 				<Dropdown sortBy={sortBy} setSortBy={setSortBy} type={type} />
 			</Nav>
 			<ItemList items={shows} type={type} />
-			<Pagination
-				page={page}
-				totalPages={shows.total_pages}
-				setPage={setPage}
-			/>
+			<Pagination page={shows.page} totalPages={shows.total_pages} />
 		</Container>
 	);
 }

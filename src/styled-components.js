@@ -40,3 +40,10 @@ export const Menu = styled.ul`
 	border-radius: 3px;
 	box-shadow: 1px 8px 16px 0 rgba(0 0 0);
 `;
+
+export const Button = styled.button`
+	padding: 0.5rem 1.5rem;
+	border-radius: 1rem;
+	background: none;
+	cursor: pointer;
+`;
