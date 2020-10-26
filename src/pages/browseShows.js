@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import queryString from 'query-string';
 import Pagination from '../components/pagination';
-import { getShows, getBrowse } from '../api/apiUtils';
+import { getBrowse } from '../api/apiUtils';
 import Dropdown from '../components/dropdown';
 import Loading from '../components/loading';
 import Search from '../components/search';

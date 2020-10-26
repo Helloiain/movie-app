@@ -17,8 +17,6 @@ function ItemCard({
 	let release = new Date(release_date || first_air_date);
 	release = release.getFullYear();
 
-	let location = useLocation();
-
 	return (
 		<Card>
 			<Link to={`/${type}/${id}`}>
