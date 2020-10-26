@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { posterUrl } from '../config';
 
 import { Card, Title, Img, SubContainer } from '../styled-components';
